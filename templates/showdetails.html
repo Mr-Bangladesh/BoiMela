@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+	<style type="text/css">
+		*{
+				margin: 0;
+				padding: 0;
+		}
+		.detailsdiv{
+			width:50%;
+			border-radius: 5px;
+			height:700px;
+			font-family: Muli, sans-serif;
+			padding-top:10px;
+			margin-top:100px;
+		}
+		.detailstable{
+			background-color: #E7EDEE;
+			width:100%;
+			padding-left:20px;
+			border-radius: 5px;
+			padding-top:20px;
+			border-spacing: 10px;
+		}
+		.accounttable2{
+			font-size: 15px;
+			font-family: Muli, sans-serif;
+			border-radius: 5px;
+			padding-bottom: 30px;
+		}
+		.accounttable2 a{
+			border:1px solid #007168;
+			border-radius: 25px;
+			padding-top:3px;
+			padding-bottom: 3px;
+			padding-left: 10px;
+			padding-right: 10px;
+			font-size: 16px;
+			text-decoration: none;
+			color:black;
+		}
+		.accounttable2 a:hover{
+			border:1px solid white;
+		}
+		
+	</style>
+	<center>
+			<div class="detailsdiv">
+				<table class="detailstable">
+					<tr>
+						<td>
+							<img src="{{product.Image.url}}" height="200" width="">
+						</td>
+						<td>
+							<h3>{{product.Book_Name}}</h3>
+							<table>
+								<tr>
+									<td><img src="{% static 'images/author.png' %}" height="25" width="25"></td>
+									<td>{{product.Authors_Name}}</td>
+								</tr>
+								<tr>
+									<td><img src="{% static 'images/catagory.png' %}" height="25" width="25"></td>
+									<td>{{product.Category}}</td>
+								</tr>
+								<tr>
+									<td><img src="{% static 'images/Condition.png' %}" height="25" width="25"></td>
+                                    {% if product.Books_Condition == True %}
+									    <td>New</td>
+                                    {% else %}
+                                        <td>Used</td>
+                                    {% endif %}
+								</tr>
+								<tr>
+									<td><img src="{% static 'images/man.png' %}" height="25" width="25"></td>
+									<td>{{product.Poster}}</td>
+								</tr>
+								<tr>
+									<td><img src="{% static 'images/location.png' %}" height="25" width="25"></td>
+									<td>{{product.Location}}</td>
+								</tr>
+								<tr>
+									<td><img src="{% static 'images/taka.png' %}" height="25" width="25"></td>
+									<td>{{product.Price}}</td>
+								</tr>
+							</table>
+
+							<h3 style="margin-top:30px;">Contact</h3>
+							<table>
+								<tr>
+									<td><img src="{% static 'images/phone.png' %}" height="25" width="25"></td>
+									<td>01783311066</td>
+								</tr>
+								<tr>
+									<td><img src="{% static 'images/email.png' %}" height="25" width="25"></td>
+									<td>{{product.Poster.email}}</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				</table>
+				<table class="detailstable">
+					<tr>
+						<td><h3>Details</h3></td>
+					</tr>
+					<tr>
+						<td style="text-align: justify;">{{product.Details}}</td>
+					</tr>    
+				</table>
+				{% if product.Poster == user %}
+				<table class="accounttable2 detailstable">
+					<tr>
+						<td><a href="{% url 'updatead' product.id %}">Modify</a></td>
+						<td><a href="{% url 'deletead' product.id %}">Delete</a></td>
+					</tr>
+				</table>
+				{% endif %}
+			</div>
+		</center>
+
+{% endblock %}

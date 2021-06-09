@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{%block content %}
+
+
+
+ <style type="text/css">
+ 	
+ 	.addpostdiv{
+			background-color: #E7EDEE;
+			width:50%;
+			border-radius: 5px;
+			margin-top: 100px;
+			margin-bottom: 100px;
+		}
+		.addposttable{
+			font-size: 15px;
+			font-family: Muli, sans-serif;
+			border-radius: 5px;
+			width:50%;
+			padding-left: 30px;
+			padding-bottom: 30px;
+			padding-top:30px;
+		}
+		.addposttable td{
+			padding-top:10px;
+			padding-left: 10px;
+		}
+		input{
+			height: 25px;
+			border-radius: 3px;
+		}
+		#addpostheader{
+			padding-top:20px;
+			font-family: Muli, sans-serif;
+		}
+		.addpostform{
+			padding-bottom: 20px;
+		}
+ </style>
+
+<center>
+	<div class="addpostdiv">
+		<h3 id="addpostheader">Free Posting Add</h3>
+
+		<form class="addpostform" method="post" action="postadd" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+			<table class="addposttable">
+				<tr>
+					<td>
+						<img src="{% static 'images/book.png' %}" heigth="25" width="25">
+					</td>
+					<td>
+						<input type="text" name="Book_Name" placeholder="Book Name" Required>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<img src="{% static 'images/author.png' %}" heigth="25" width="25">
+					</td>
+					<td>
+						<input type="text" name="Authors_Name" placeholder="Author's Name" Required>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<img src="{% static 'images/catagory.png' %}" heigth="25" width="25">
+					</td>
+					<td>
+						<select name="Category" style="height: 25px; width: 158px; border-radius: 5px;">
+						  {% for category in categories %}
+						  <option value="{{category.id}}">{{category}}</option>
+						  {% endfor %}
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="Books_Condition" id="Books_Condition" checked></td>
+					<td>New Book</td>
+				</tr>
+				<tr>
+					<td>
+						<img src="{% static 'images/location.png' %}" heigth="25" width="25">
+					</td>
+					<td>
+						<input type="text" name="Location" placeholder="Your Location" Required>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<img src="{% static 'images/taka.png' %}" heigth="25" width="25">
+					</td>
+					<td>
+						<input type="text" name="Price" placeholder="Price" Required>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<img src="{% static 'images/details.png' %}" heigth="25" width="25">
+					</td>
+					<td>
+						<textarea name="Details" Required></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<img src="{% static 'images/image.png' %}" heigth="25" width="25">
+					</td>
+					<td>
+						<input type="file" name="Image" Required>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="text" name="Poster" value="{{user.id}}" style="display:none;">
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><h4></h4></td>
+				</tr>
+			</table>
+
+			<input type="submit" name="submit" value="PostAdd" style="width:60px;">
+
+		</form>
+		</div>
+	</center>
+
+{% endblock %}

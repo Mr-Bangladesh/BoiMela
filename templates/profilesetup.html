@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+ <style type="text/css">
+ 	.signupdiv{
+			background-color: #E7EDEE;
+			width:50%;
+			border-radius: 5px;
+			margin-top: 100px;
+			margin-bottom: 100px;
+		}
+		.signuptable{
+			font-size: 15px;
+			font-family: Muli, sans-serif;
+			border-radius: 5px;
+			width:50%;
+			padding-left: 30px;
+			padding-bottom: 30px;
+			padding-top:30px;
+		}
+		.signuptable td{
+			padding-top:10px;
+		}
+		input{
+			height: 25px;
+			border-radius: 3px;
+		}
+		#signupheader{
+			padding-top:20px;
+			font-family: Muli, sans-serif;
+		}
+		.signupform{
+			padding-bottom: 20px;
+		}
+ </style>
+
+<center>
+	<div class="signupdiv">
+		<h3 id="signupheader">Setup Your Account</h3>
+		
+		<form class="signupform" method="post" action="profilesetup" enctype="multipart/form-data">
+            {% csrf_token %}
+			<table class="signuptable">
+				<tr>
+					<td>
+						<img src="{% static 'images/man.png' %}" heigth="25" width="25">
+					</td>
+					<td>
+                    <select name="Division" style="height: 25px; width: 160px; border-radius: 5px;">
+                        {% for division in divisions %}
+                        <option value="{{division.id}}">{{division}}</option>
+                        {% endfor %}
+                    </select>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<img src="{% static 'images/man.png' %}" heigth="25" width="25">
+					</td>
+					<td>
+						<select name="District" style="height: 25px; width: 160px; border-radius: 5px;">
+                        {% for district in districts %}
+                        <option value="{{district.id}}">{{district}}</option>
+                        {% endfor %}
+                    </select>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<img src="{% static 'images/password.png' %}" heigth="25" width="25">
+					</td>
+					<td>
+						<input type="file" name="Image" Required>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<img src="{% static 'images/confirmpassword.png' %}" heigth="25" width="25">
+					</td>
+					<td>
+						<input type="text" name="Phone" placeholder="Your Phone Number" Required>
+					</td>
+				</tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>
+                        <input type="text" name="User" value="{{user.id}}" style="display:none;">
+                    </td>
+                </tr>
+			</table>
+
+			<input type="submit" name="submit" value="Register" style="width:80px;">
+			<br> <br>
+			Already Have an Account?
+			<a href="{% url 'login' %}">Login</a>
+
+		</form>
+		</div>
+	</center>
+
+{% endblock %}

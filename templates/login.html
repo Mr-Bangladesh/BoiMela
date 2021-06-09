@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<style type="text/css">
+	.logindiv{
+			background-color: #E7EDEE;
+			width:50%;
+			border-radius: 5px;
+			margin-top: 100px;
+			margin-bottom: 100px;
+		}
+		.logintable{
+			
+			font-size: 15px;
+			font-family: Muli, sans-serif;
+			border-radius: 5px;
+			width:50%;
+			padding-left: 30px;
+			padding-bottom: 30px;
+			padding-top:30px;
+		}
+		.logintable td{
+			padding-top:10px;
+		}
+		input{
+			height: 35px;
+			width: 216px;
+			color: #2f3432;
+		    background: #fff;
+		    border-radius: 4px;
+		    border: 1px solid #dbdbdb;
+		    -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+		    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+		}
+		.inputbutton{
+			width: 90px;
+			color:white;
+			display: inline-block;
+		    line-height: 1;
+		    text-decoration: none;
+		    border-radius: 4px;
+		    font-weight: 700;
+		    border: solid 0 transparent;
+		    background-color: 00A884;
+		}
+		#loginheader{
+			padding-top:20px;
+			font-family: Muli, sans-serif;
+		}
+		.loginform{
+			padding-bottom: 20px;
+		}
+
+</style>
+<center>
+	<div class="logindiv">
+		<h3 id="loginheader">Member Login</h3>
+
+		<form class="loginform" method="post" action="login">
+        {%csrf_token%}
+			<table class="logintable">
+				<tr> 
+					<td>
+						<img src="{% static 'images/email.png' %}" height="25" width="25">
+					</td>
+					<td>
+						<input type="Email" name="Email" placeholder="Enter Your Email" Required>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<img src="{% static 'images/password.png' %}" heigth="25" width="25">
+					</td>
+					<td>
+						<input type="password" name="Password" placeholder="Your password" Required>
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><h4>
+						</h4>
+					</td>
+				</tr>
+			</table>
+            <input type="submit" name="submit" value="Login" style="width:60px;">
+			<br><br>
+			Not have an Account? 
+			<a href="{% url 'register' %}">Register</a>
+
+		</form>
+		</div>
+	</center>
+
+{% endblock %}

@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<style type="text/css">
+	.accounttable{
+			font-size: 15px;
+			font-family: Muli, sans-serif;
+			border-radius: 5px;
+			width:100%;
+			padding-left: 30px;
+			padding-bottom: 30px;
+			padding-top:10px;
+
+		}
+		.accounttable td{
+			padding-left:10px;
+		}
+		.accountdiv{
+			background-color: #E7EDEE;
+			width:50%;
+			border-radius: 5px;
+			margin-top:150px;
+			margin-bottom: 150px;
+		}
+		#accountheader{
+			padding-top:20px;
+			font-family: Muli, sans-serif;
+		}
+		.accounttable2{
+			font-size: 15px;
+			font-family: Muli, sans-serif;
+			border-radius: 5px;
+			padding-bottom: 30px;
+		}
+		.accounttable2 a{
+			border:1px solid #007168;
+			border-radius: 25px;
+			padding-top:3px;
+			padding-bottom: 3px;
+			padding-left: 10px;
+			padding-right: 10px;
+			font-size: 16px;
+			text-decoration: none;
+			color:black;
+		}
+		.accounttable2 a:hover{
+			border:1px solid white;
+		}
+</style>
+<center>
+		<div class="accountdiv">
+			<h3 id="accountheader">MY Account</h3>
+			<table class="accounttable">
+				<tr>
+					<td>
+						<img src="{{profile.Image.url}}" height="100" width="" style="border-radius: 8px;">
+					</td>
+					<td>
+						<table>
+							<tr>
+								<td><img src="{% static 'images/man.png' %}" height="25" width="25"></td>
+								<td>{{profile.User}}</td>
+							</tr>
+							<tr>
+								<td><img src="{% static 'images/phone.png' %}" height="25" width="25"></td>
+								<td>{{profile.Phone}}</td>
+							</tr>
+							<tr>
+								<td><img src="{% static 'images/email.png' %}" height="25" width="25"></td>
+								<td>{{profile.User.email}}</td>
+							</tr>
+							<tr>
+								<td><img src="{% static 'images/location.png' %}" height="25" width="25"></td>
+								<td>{{profile.District}}, {{profile.Division}}</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+
+			<table class="accounttable2">
+				<tr>
+					<td><a href="{% url 'managead' %}">Manage My Adds</a></td>
+					<td><a href="">Edit Profile</a></td>
+				</tr>
+			</table>
+		</div>
+	</center>
+
+{% endblock %}

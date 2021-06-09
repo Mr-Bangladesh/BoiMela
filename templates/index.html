@@ -1,0 +1,160 @@
+{% extends 'base.html' %}
+{% load static %}
+{%block content%}
+
+ <style type="text/css">
+		.indexdiv{
+			width:80%;
+			background-color: #E7EDEE;
+			border-radius: 5px;
+			font-family: Muli, sans-serif;
+			margin-top: 40px;
+			margin-bottom: 50px;
+			padding-bottom: 30px;
+		}
+
+		.indextable{
+			padding:20px;
+		}
+		.citiesp{
+					    
+		    text-align: center;
+    		border-radius: 40px;
+    		padding: 5px;
+		}
+
+		.catagories{
+			text-align: center;
+			border-radius: 40px;
+			padding:5px;
+			padding-right: 58px;
+		}
+
+		.trcities{}
+		.linkcities{
+			text-decoration: none;
+		}
+		.tablespace{
+
+		}
+		.logo{
+			height:65px;
+			width: 65px;
+			border-radius: 35px;
+		}
+		
+	</style>
+	
+	<center>
+		<div class="indexdiv" style="margin-top: 110px;">
+			<table class="indextable">
+				<tr>
+					<td>
+						<h3>Welcome to Boimela.com</h3>
+						<p style="margin-bottom: 15px;">Buy and sell books in Bangladesh.</p>
+					</td>
+				</tr>
+			</table>
+			<h2 style="margin-bottom: 7px"><u>Divisions</u></h2>
+						<table class="cities">
+						{% for division in divisions %}
+							<tr class="trcities">
+								<td class="citiesp">
+								<a href="{% url 'products_cat' division.id %}" class="linkcities">{{division}}</a>
+								</td>
+							</tr>
+						{% endfor %}	
+						</table>
+
+		</div>
+
+		<div class="indexdiv">
+			<h2 style="padding-top: 30px;">Catagories</h2>
+			<table class="indextable">
+				<tr>
+					<td class="catagories">
+						<a href="details.html" class="linkcities"><img src="{% static 'images/agriculture.png' %}" class="logo"></a>
+					</td>
+					<td class="catagories" >
+						<a href="details.php?catagory=Arts" class="linkcities"><img src="{% static 'images/arts_logo.png' %}" class="logo"></a>
+					</td>
+					<td class="catagories" >
+						<a href="details.php?catagory=Business Studies" class="linkcities"><img src="{% static 'images/bs_logo.png' %}" class="logo"></a>
+					</td>
+					<td class="catagories">
+						<a href="details.php?catagory=Engineering" class="linkcities"><img src="{% static 'images/engineering_logo.png' %}" class="logo"></a>
+					</td>
+				</tr>
+				<tr>
+					<td class="catagories">
+						<a href="details.php?catagory=Agriculture" class="linkcities">Agriculture</a>
+					</td>
+					<td class="catagories" >
+						<a href="details.php?catagory=Arts" class="linkcities">Arts</a>
+					</td>
+					<td class="catagories">
+						<a href="details.php?catagory=Business Studies" class="linkcities">Business Studies</a>
+					</td>
+					<td class="catagories">
+						<a href="details.php?catagory=Engineering" class="linkcities">Engineering</a>
+					</td>
+				</tr>
+				<tr>
+					<td class="catagories">
+						<a href="details.php?catagory=Mathematics" class="linkcities"><img src="{% static 'images/mathematics_logo.png' %}" class="logo"></a>
+					</td>
+					<td class="catagories">
+						<a href="details.php?catagory=Law" class="linkcities"><img src="{% static 'images/law_logo.png' %}" class="logo"></a>
+					</td>
+					<td class="catagories">
+						<a href="details.php?catagory=Medical Science" class="linkcities"><img src="{% static 'images/medical.png' %}" class="logo"></a>
+					</td>
+					<td class="catagories">
+						
+						<a href="details.php?catagory=Veterinary" class="linkcities"><img src="{% static 'images/veterinary_logo.png' %}" class="logo"></a>
+					</td>
+				</tr>
+
+				<tr>
+					<td class="catagories">
+						<a href="details.php?catagory=Mathematics" class="linkcities">Mathematics</a>
+					</td>
+					<td class="catagories">
+						<a href="details.php?catagory=Law" class="linkcities">Law</a>
+					</td>
+					<td class="catagories">
+						<a href="details.php?catagory=Medical Science" class="linkcities">Medical Science</a>
+					</td>
+					<td class="catagories">
+						
+						<a href="details.php?catagory=Veterinary" class="linkcities">Veterinary</a>
+					</td>
+				</tr>
+
+				<tr>
+					<td class="catagories">
+						
+						<a href="details.php?catagory=Job Preparation" class="linkcities"><img src="{% static 'images/job.png' %}" class="logo"></a>
+					</td>
+					<td class="catagories">
+						
+						<a href="details.php?catagory=Other" class="linkcities"><img src="{% static 'images/other.png' %}" class="logo"></a>
+					</td>
+					
+				</tr>
+
+				<tr>
+					<td class="catagories">
+						
+						<a href="details.php?catagory=Job Preparation" class="linkcities">Job Preparation</a>
+					</td>
+					<td class="catagories">
+						
+						<a href="details.php?catagory=Other" class="linkcities">Other</a>
+					</td>
+				</tr>
+			</table>
+		</div>
+</center>
+
+{% endblock %}

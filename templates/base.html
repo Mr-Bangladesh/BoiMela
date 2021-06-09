@@ -1,0 +1,151 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="{% static 'bootstrap/bootstrap4.5.css' %}">
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.header{
+			box-shadow: 1px 0px 2px 1px #247ba0;
+		    background-color: #247BA0;
+		    height: 70px;
+		    position: fixed;
+		    top: 0;
+		    width: 100%;
+		    z-index: 99999;
+		    padding-left: 20px;
+			}
+			.header a{
+			    color: white;
+			    margin-left: 4px;
+			    text-decoration: none;
+			}
+			#navigation a{
+				border:1px solid #007168;
+				border-radius: 25px;
+				padding-top:3px;
+				padding-bottom: 3px;
+				padding-left: 10px;
+				padding-right: 10px;
+				font-size: 16px;
+			}
+			#navigation a:hover{
+				border:1px solid white;
+			}
+			.logo_inside_header{
+				padding-left: 40px;
+				width : 50%;
+			}
+		</style>
+
+		<meta charset="utf-8">
+
+		<title>BoiMela.com</title>
+	</head>
+	<body>
+		<table class="header">
+			<tr>
+				<td class="logo_inside_header">
+					<a href="/"><img src="{% static 'images/logo.png' %}" height="60" width="100"></a>
+				</td>
+				<td>
+					<table>
+						<tr>
+							<td id="navigation"><a href="{% url 'products' %}">Buy Book</a></td>
+							<td id="navigation"><a href="{% url 'postadd' %}">Sell Book</a></td>
+						</tr>
+					</table>
+				</td>
+				{% if user.is_authenticated %}
+				<td id="navigation"><a href="{% url 'logout' %}">Logout</a></td>
+				<td id="navigation"><a href="{% url 'profile' %}">Profile</a></td>
+				{% else %}
+				<td id="navigation"><a href="{% url 'register' %}">Register</a></td>
+				<td id="navigation"><a href="{% url 'login' %}">Login</a></td>
+				{% endif %}
+			</tr>
+		</table>
+
+        {% block content%}
+        {% endblock %}
+
+    </body>
+
+
+    
+	<style type="text/css">
+		*{
+			margin:0;
+			padding: 0;
+		}
+		.mainfooter{
+			
+		}
+		.footerdiv{
+			width:100%;
+			background-color: #353535;
+		}
+		.footertable{
+			padding-top:30px;
+			padding-bottom: 30px;
+			width:80%;
+		}
+		.footertable th{
+			color:white;
+			font-size: 20px;
+			font-family: Muli, sans-serif;
+			padding-bottom: 40px;
+		}
+		.footertable td{
+			font-family: Muli, sans-serif;
+			text-align: center;
+			padding-bottom: 10px;
+		}
+		.footertable a{
+			color:white;
+			opacity: 0.7;
+			text-decoration: none;
+		}
+		.footertable a:hover{
+			color:#00BCD4;
+		}
+		#contactinfo{
+			color:white;
+			opacity: 0.7;
+		}
+	</style>
+	<center class="mainfooter">
+		<footer>
+			<div class="footerdiv">
+				<table class="footertable">
+					<tr>
+						<th>More Details</th>
+						<th>Menu</th>
+						<th>Contact info</th>
+					</tr>
+					<tr>
+						<td><a href="">About us</a></td>
+						<td><a href="{% url 'products' %}">Buy Books</a></td>
+						<td id="contactinfo"><img src="{% static 'images/location.png' %}" height="20" width="20">University of Barisal,Barisal</td>
+					</tr>
+					<tr>
+						<td><a href="">Tearms and conditions</a></td>
+						<td><a href="{% url 'postadd' %}">Sell Books</a></td>
+						<td id="contactinfo">+8801783311066</td>
+					</tr>
+					<tr>
+						<td><a href="">How to sell fast?</a></td>
+						<td></td>
+						<td id="contactinfo">buwalkineds@gmail.com</td>
+					</tr>
+				</table>
+				<p style="padding-bottom: 20px; color:white; opacity: 0.7;">All rights reserved</p>
+			</div>
+		</footer>
+	</center>
+
+</html>

@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<style type="text/css">
+	.detailsdiv{
+			width:50%;
+			border-radius: 5px;
+			
+			font-family: Muli, sans-serif;
+			padding-top:10px;
+			margin-top:50px;
+			margin-bottom: 100px;
+			background-color: #E7EDEE;
+		}
+		.detailstable{
+			background-color: #E7EDEE;
+			width:100%;
+			padding-left:20px;
+			border-radius: 5px;
+			padding-top:20px;
+			border-spacing: 10px;
+		}
+		.searchtable{
+			/*padding-top: 30px;*/
+			background-color: #E7EDEE;
+			border-radius: 5px;
+		}
+</style>
+
+<center>
+		<div class="detailsdiv">
+			<form method="post" action="">
+				<table class="searchtable">
+					<tr>
+						<td>
+							<input type="text" name="search" placeholder="Book Name or Author Name or Category" style="width: 250px; height: 30px;" Required>
+						</td>
+						<td>
+							<input type="submit" name="submit" value="Search" style="width: 70px; height: 30px;">
+						</td>
+					</tr>
+				</table>
+			</form>
+
+			<table class="detailstable">
+            {% for product in products %}
+				<tr>
+					<td><a href="{% url 'showdetails' product.id %}"><img src="{{product.Image.url}}" height="110" width="100"></a></td>
+					<td>
+						<a href="{% url 'showdetails' product.id %}"><h3>{{product.Book_Name}}</h3></a>
+						<table>
+							<tr>
+								<td><img src="{% static 'images/location.png' %}" height="25" width="25"></td>
+								<td>{{product.Location}}</td>
+							</tr>
+							<tr>
+								<td><img src="{% static 'images/taka.png' %}" height="25" width="25"></td>
+								<td>{{product.Price}}</td>
+							</>
+						</table>
+					</td>
+				</tr>
+
+                {% endfor %}
+
+			</table>
+				
+		</div>
+	</center>
+
+{% endblock %}
